@@ -324,7 +324,7 @@ body {
 }
 
 .app {
-  padding-block: 20rem;
+  padding-block: 10rem;
   background-color: var(--danger-main);
 }
 
