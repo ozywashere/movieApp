@@ -1,5 +1,11 @@
-const preloader = document.querySelector('.preloader')
-
+const preloader = document.querySelector('[data-loader]')
+window.addEventListener('load ', () => {
+  preloader.classList.add('remove')
+})
+const navbar = document.querySelector('[data-navbar]')
+window.addEventListener('scroll', () => {
+  navbar.classList[window.scrollY > 200 ? 'add' : 'remove']('active')
+})
 const API_URL =
   'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=05135f9cbcad7eb8b5d839b4208a91b0'
 
@@ -10,17 +16,11 @@ const SEARCH_API =
 const form = document.querySelector('[data-form]')
 const search = document.querySelector('[data-search]')
 const main = document.querySelector('[data-item]')
-console.log(main)
-//
 
 const getMovies = async (url) => {
-  try {
-    const res = await fetch(url)
-    const data = await res.json()
-    showMovies(data.results)
-  } catch (error) {
-    console.log(error)
-  }
+  const res = await fetch(url)
+  const data = await res.json()
+  showMovies(data.results)
 }
 getMovies(API_URL)
 const showMovies = (movies) => {
@@ -32,7 +32,7 @@ const showMovies = (movies) => {
     movieEl.innerHTML = `<div class="movie">
                             <img src="${
                               IMG_PATH + poster_path
-                            }" class="movie-img" height="400">
+                            }" class="movie-img" height="400" >
                             <div class="movie-img-overlay">
                                 <div class="movie-info">
                                     <h1 class="movie-title">
@@ -73,10 +73,4 @@ form.addEventListener('submit', (e) => {
   } else {
     window.location.reload()
   }
-})
-
-const navbar = document.querySelector('[data-navbar]')
-
-window.addEventListener('scroll', () => {
-  navbar.classList[window.scrollY > 200 ? 'add' : 'remove']('active')
 })
