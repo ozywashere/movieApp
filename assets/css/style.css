@@ -270,9 +270,11 @@ body {
 .nav-item:not(:last-child) {
   margin-inline-end: 2vw;
 }
+
 .navbar.active .nav-link {
   color: var(--danger-pressed);
 }
+
 .nav-link {
   font-size: var(--fs-8);
   font-weight: var(--fw-medium);
@@ -282,7 +284,7 @@ body {
   overflow: hidden;
   transition: all 0.25s ease-in-out;
 }
-.nav-link:is(:hover, :focus-visible) {
+.nav-link.active:is(:hover, :focus-visible) {
   color: var(--danger-hover);
 }
 .nav-link::before {
