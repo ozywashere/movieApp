@@ -2,9 +2,12 @@ const preloader = document.querySelector('[data-loader]')
 window.addEventListener('load ', () => {
   preloader.classList.add('remove')
 })
+const scrollBtn = document.querySelector('[data-scroll-to-top]')
 const navbar = document.querySelector('[data-navbar]')
+
 window.addEventListener('scroll', () => {
   navbar.classList[window.scrollY > 200 ? 'add' : 'remove']('active')
+  scrollBtn.classList[window.scrollY > 100 ? 'add' : 'remove']('active')
 })
 const API_URL =
   'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=05135f9cbcad7eb8b5d839b4208a91b0'
